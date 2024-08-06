@@ -1,6 +1,5 @@
 package org.example;
 
-// Classe base para componentes visuais
 abstract class Componente {
 
     private String descricao;

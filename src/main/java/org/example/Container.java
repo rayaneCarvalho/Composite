@@ -3,7 +3,6 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-// Classe para representar contêineres de componentes
 class Container extends Componente {
 
     private List<Componente> componentes;

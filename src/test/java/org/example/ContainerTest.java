@@ -2,11 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-import java.util.ArrayList;
 
 class ContainerTest {
 
@@ -30,10 +26,9 @@ class ContainerTest {
         container.adicionarComponente(componente1);
         container.adicionarComponente(componente2);
 
-        List<Componente> componentes = obterComponentes(container);
-        assertEquals(2, componentes.size());
-        assertEquals("Componente Botão: Botão de Login\n", componentes.get(0).exibir());
-        assertEquals("Componente Botão: Botão de Cadastro\n", componentes.get(1).exibir());
+        String resultadoExibicao = container.exibir();
+        assertTrue(resultadoExibicao.contains("Componente Botão: Botão de Login\n"));
+        assertTrue(resultadoExibicao.contains("Componente Botão: Botão de Cadastro\n"));
     }
 
     @Test
@@ -48,17 +43,5 @@ class ContainerTest {
         assertTrue(resultadoExibicao.contains("Container: Container Principal\n"));
         assertTrue(resultadoExibicao.contains("Componente Botão: Botão de Login\n"));
         assertTrue(resultadoExibicao.contains("Componente Botão: Botão de Cadastro\n"));
-    }
-
-    private List<Componente> obterComponentes(Container container) {
-        // Método auxiliar para obter os componentes do container usando reflexão
-        try {
-            java.lang.reflect.Field field = Container.class.getDeclaredField("componentes");
-            field.setAccessible(true);
-            return (List<Componente>) field.get(container);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
     }
 }

@@ -1,6 +1,5 @@
 package org.example;
 
-// Classe para representar componentes individuais
 class ComponenteVisual extends Componente {
 
     private String tipo;
